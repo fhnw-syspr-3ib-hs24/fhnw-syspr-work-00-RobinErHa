@@ -2,7 +2,6 @@
 
 int main(int argc, char *argv[]) {
 	
-
 	for (int i = 1; i < argc ; i++) {
 		for (char *p = argv[i]; *p != '\0'; p++) {
 			if (*p < 'a' || *p > 'z') { 
