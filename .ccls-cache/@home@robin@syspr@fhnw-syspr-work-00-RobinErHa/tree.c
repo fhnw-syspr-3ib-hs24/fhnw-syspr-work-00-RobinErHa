@@ -8,7 +8,7 @@ typedef struct node {
 	char label[32];
 } Node;
 
-int main(int argc, char *argv[]) {	
+int main() {	
 	Node *n1 = malloc(sizeof(Node));
 	Node *n2 = malloc(sizeof(Node));
 	Node *n3 = malloc(sizeof(Node));
