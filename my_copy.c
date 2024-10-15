@@ -12,20 +12,19 @@ int main()
 	
 	char buf[32];
 	ssize_t r = read(fd_original, buf, 32);
-	if (r == -1) {
-		printf("Error while reading file\n Error: %d\n", errno);
-		return 1;
-	};
-	while(r != 0) {
+	while(r > 0) {
 		ssize_t w = write(fd_copy, buf, r);	
 		if (w == -1) {
 			printf("Error while writing to file\n Error: %d\n", errno);
 			return 1;
-		};
+		}
 		r = read(fd_original, buf, 32);
-	};
+	}
+        if (r == -1) {
+		printf("Error while reading file\n Error: %d\n", errno);
+		return 1;
+	}
 	close(fd_original);
-	close(fd_copy);
-	
+	close(fd_copy);	
 	return 0;
 }
