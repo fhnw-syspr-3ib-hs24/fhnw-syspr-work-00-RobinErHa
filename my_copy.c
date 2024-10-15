@@ -7,7 +7,7 @@
 
 int main()
 {
-	int fd_original = open("./my.txt", O_RDONLY|O_APPEND);
+	int fd_original = open("./my.txt", O_RDONLY);
 	int fd_copy = open("./my_txt_copy.txt", O_WRONLY|O_APPEND|O_CREAT, S_IRUSR|S_IWUSR);
 	
 	char buf[32];
