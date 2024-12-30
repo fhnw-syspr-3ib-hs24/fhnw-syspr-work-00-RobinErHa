@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 	}
 	int status = 1;
 	while (status > 0){
-		wait(&status);
+	wait(&status);
 	}
+	//wait(NULL);
 	return EXIT_SUCCESS;
 }
