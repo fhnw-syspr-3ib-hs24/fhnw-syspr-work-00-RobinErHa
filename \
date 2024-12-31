@@ -1,0 +1,35 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/wait.h>
+
+int main(int argc, char *argv[])
+{	
+	int fd[2];
+	pipe(fd);
+	int res[3];	
+
+	for (int i = 0; i < 3; i++){
+		res[i] = fork();	
+		if (res[i] == 0) {
+			close(fd[0]);
+			char* str = "hello\n";
+			write(fd[1], str, strlen(str));
+			close(fd[1]);
+			exit(0);
+		}
+	}
+	wait(NULL);
+	close(fd[1]);
+
+
+	char *buf = malloc(1024);
+	read(fd[0], buf, 1024);
+
+	write(STDOUT_FILENO, buf, 1024);
+	printf("\n");
+	return 0;
+}
